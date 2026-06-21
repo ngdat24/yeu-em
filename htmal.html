@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gửi Nhọc Nham</title>
+    <style>
+        /* Tạo giao diện màn hình console cực ngầu */
+        body {
+            background-color: #121212;
+            color: #ff66b2; /* Chữ màu xanh lá hacker, cậu có thể đổi mã màu sang hồng #ff66b2 nếu muốn */
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <pre id="screen"></pre> <script>
+        const screen = document.getElementById("screen");
+
+        // Hàm tạo độ trễ giống y hệt this_thread::sleep_for bên C++
+        const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+        // Hàm gõ chữ
+        async function typeText(text, delay = 50) {
+            for (let i = 0; i < text.length; i++) {
+                screen.innerHTML += text.charAt(i);
+                await sleep(delay);
+            }
+        }
+
+        // Hàm main chạy chính
+        async function main() {
+            await typeText("Khoi dong he thong...\n");
+            await typeText("Dang kiem tra du lieu...\n");
+            await typeText("Dang tim kiem nguoi dac biet...\n\n");
+            await sleep(1000);
+
+            await typeText("Ket qua tim kiem:\nTen: Ngoc Lam\nTrang thai: Rat dac biet\nMuc do quan trong: 1000000/10\n\n");
+            
+            await typeText("Dang phan tich trai tim...\n");
+            await sleep(2000);
+
+            await typeText("\nKet qua:\nKhong the xoa Ngoc Lam khoi bo nho.\nNgoc Lam sieu de thuong sieu dang yeu.\nTinh cam hien tai: Cuc ky nghiem tuc.\n\n");
+            
+            await typeText("THONG BAO QUAN TRONG\n----------------------------------\nMinh rat yeu Ngoc Lam.\nCam on vi da xuat hien trong cuoc song cua minh.\nMong rang moi ngay cua Ngoc Lam deu tran ngap niem vui.\nVa du chuyen gi xay ra, Ngoc Lam van luon la nguoi dac biet.\n----------------------------------\n");
+            await typeText("Yeuuuuuuuuuuuuu emmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm\nmoah moah moah moah\n\n");
+
+            await typeText("Dang ve trai tim...\n\n");
+
+            // Toán học vẽ trái tim y hệt C++
+            for (let y = 1.5; y > -1.5; y -= 0.1) {
+                let line = "";
+                for (let x = -1.5; x < 1.5; x += 0.05) {
+                    let a = x * x + y * y - 1;
+                    if ((a * a * a - x * x * y * y * y) <= 0.0) {
+                        line += "*";
+                    } else {
+                        line += " ";
+                    }
+                }
+                screen.innerHTML += line + "\n";
+                await sleep(50);
+            }
+        }
+
+        // Kích hoạt chương trình
+        main();
+    </script>
+</body>
+</html>
